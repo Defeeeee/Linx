@@ -19,6 +19,28 @@ int ValorThr = 250;
 float step = 0;
 long lm = 0;
 
+int MaxA = 0;
+int MaxB = 0;
+int MaxC = 0;
+int MaxD = 0;
+int MaxE = 0;
+int MaxF = 0;
+int MaxG = 0;
+int MaxH = 0;
+int MaxI = 0;
+int MaxJ = 0;
+
+int MinA = 1024;
+int MinB = 1024;
+int MinC = 1024;
+int MinD = 1024;
+int MinE = 1024;
+int MinF = 1024;
+int MinG = 1024;
+int MinH = 1024;
+int MinI = 1024;
+int MinJ = 1024;
+
 // Creo funcion Leer que toma por argumentos a los array de sensores y devuelve un error
 int Leer(int sDer[], int sIzq[]) {
   int valorDer = 0;
@@ -64,6 +86,11 @@ void setup() {
 }
 
 void loop() {
+  while (digitalRead(2)) {
+    CalibrarIzq();
+    CalibrarDer();
+  }
+  
   long pt = micros();
   int e = Leer(SensoresDerecha, SensoresIzquierda);
   Serial.print(PID.pid(e, step));
