@@ -1,45 +1,50 @@
 void CalibrarIzq() {
-  int aux = 0
-  aux = analogRead(A5)
-  if (aux > maxA) maxA = aux;
-  if (aux < minA) minA = aux;
+  int aux = 0;
+  aux = analogRead(A5);
+  if (aux > MaxA) MaxA = aux;
+  if (aux < MinA) MinA = aux;
 
-  aux = analogRead(A6)
-  if (aux > maxB) maxB = aux;
-  if (aux < minB) minB = aux;
+  aux = analogRead(A6);
+  if (aux > MaxB) MaxB = aux;
+  if (aux < MinB) MinB = aux;
 
-  aux = analogRead(A7)
-  if (aux > maxC) maxC = aux;
-  if (aux < minC) minC = aux;
+  aux = analogRead(A7);
+  if (aux > MaxC) MaxC = aux;
+  if (aux < MinC) MinC = aux;
 
-  aux = analogRead(A8)
-  if (aux > maxD) maxD = aux;
-  if (aux < minD) minD = aux;
+  aux = analogRead(A8);
+  if (aux > MaxD) MaxD = aux;
+  if (aux < MinD) MinD = aux;
 
-  aux = analogRead(A9)
-  if (aux > maxE) maxE = aux;
-  if (aux < minE) minE = aux;
+  aux = analogRead(A9);
+  if (aux > MaxE) MaxE = aux;
+  if (aux < MinE) MinE = aux;
 }
 
 void CalibrarDer() {
-  int aux = 0
-  aux = analogRead(A10)
-  if (aux > maxF) maxF = aux;
-  if (aux < minF) minF = aux;
+  int aux = 0;
+  aux = analogRead(A10);
+  if (aux > MaxF) MaxF = aux;
+  if (aux < MinF) MinF = aux;
 
-  aux = analogRead(A11)
-  if (aux > maxG) maxG = aux;
-  if (aux < minG) minG = aux;
+  aux = analogRead(A11);
+  if (aux > MaxG) MaxG = aux;
+  if (aux < MinG) MinG = aux;
 
-  aux = analogRead(A12)
-  if (aux > maxH) maxH = aux;
-  if (aux < minH) minH = aux;
+  aux = analogRead(A12);
+  if (aux > MaxH) MaxH = aux;
+  if (aux < MinH) MinH = aux;
 
-  aux = analogRead(A13)
-  if (aux > maxI) maxI = aux;
-  if (aux < minI) minI = aux;
+  aux = analogRead(A13);
+  if (aux > MaxI) MaxI = aux;
+  if (aux < MinI) MinI = aux;
 
-  aux = analogRead(A14)
-  if (aux > maxJ) maxJ = aux;
-  if (aux < minBJ) minJ = aux;
+  aux = analogRead(A14);
+  if (aux > MaxJ) MaxJ = aux;
+  if (aux < MinJ) MinJ = aux;
+}
+
+void Mapear() {
+  val
+  valA = map()
 }
