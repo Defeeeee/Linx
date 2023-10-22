@@ -1,6 +1,5 @@
 #include "SensorCalibration.h"
 
-int analogPins[] = { A5, A6, A7, A8, A9, A10, A11, A12, A13, A14 };
 
 SensorCalibration::SensorCalibration(int numSensors) {
   this->numSensors = numSensors;
@@ -13,7 +12,7 @@ void SensorCalibration::begin() {
   }
 }
 
-void SensorCalibration::calibrate(int numSamples) {
+void SensorCalibration::calibrate(int numSamples, int analogPins[]) {
   for (int i = 0; i < numSensors; i++) {
     for (int j = 0; j < numSamples; j++) {
       sensorValues[i] += analogRead(analogPins[i]);

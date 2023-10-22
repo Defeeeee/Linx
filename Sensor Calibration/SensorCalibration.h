@@ -7,7 +7,7 @@ class SensorCalibration {
 public:
   SensorCalibration(int numSensors); // Constructor that accepts the number of sensors
   void begin();
-  void calibrate(int numSamples);
+  void calibrate(int numSamples, int analogPins[]);
   int getCalibratedValue(int sensorIndex);
 
 private:

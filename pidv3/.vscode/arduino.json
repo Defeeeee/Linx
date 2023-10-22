@@ -1,0 +1,6 @@
+{
+    "sketch": "pidv3.ino",
+    "board": "arduino:avr:mega",
+    "port": "/dev/tty.usbmodem1101",
+    "configuration": "cpu=atmega2560"
+}
