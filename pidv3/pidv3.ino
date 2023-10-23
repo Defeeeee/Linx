@@ -1,4 +1,3 @@
-#include <Arduino.h>
 #include <SensorCalibration.h>
 #include <PIDv1.h>
 
@@ -16,9 +15,6 @@ PID PID(1, 0.005, 0.2);
 
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14};
 int valorsensor[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-int valDer = 0;
-int valIzq = 0;
 
 float step = 0;
 
@@ -47,12 +43,12 @@ void loop()
     for (int i = 0; i < 5; i++)
     {
         if (valorsensor[i] == 1)
-            error++
+            error++;
     }
     for (int i = 5; i < 10; i++)
     {
         if (valorsensor[i] == 1)
-            error--
+            error--;
     }
 
     float output = PID.pid(error, step);
