@@ -55,13 +55,13 @@ void loop()
 
     if (output > 0)
     {
-        analogWrite(PINMOTORPWM1, output * 255);
+        analogWrite(PINMOTORPWM1, 255 - output * 255);
         analogWrite(PINMOTORPWM2, 255);
     }
     else
     {
         analogWrite(PINMOTORPWM1, 255);
-        analogWrite(PINMOTORPWM2, -output * 255);
+        analogWrite(PINMOTORPWM2, 255 + output * 255);
     }
 
 
