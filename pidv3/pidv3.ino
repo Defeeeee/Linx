@@ -34,6 +34,7 @@ void loop()
 {
     // put your main code here, to run repeatedly:
     long pt = micros();
+    float error;
 
     for (int i = 0; i < 10; i++)
     {
@@ -46,15 +47,14 @@ void loop()
     for (int i = 0; i < 5; i++)
     {
         if (valorsensor[i] == 1)
-            valDer += 1;
+            error++
     }
     for (int i = 5; i < 10; i++)
     {
         if (valorsensor[i] == 1)
-            valIzq += 1;
+            error--
     }
 
-    float error = valDer - valIzq;
     float output = PID.pid(error, step);
 
     if (output > 0)
