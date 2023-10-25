@@ -16,6 +16,7 @@ void SensorCalibration::calibrate(int numSamples, int analogPins[]) {
   for (int i = 0; i < numSensors; i++) {
     for (int j = 0; j < numSamples; j++) {
       sensorValues[i] += analogRead(analogPins[i]);
+      delay(2);
     }
     sensorValues[i] /= numSamples;
   }
