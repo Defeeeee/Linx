@@ -9,14 +9,15 @@
 #define PINMOTORPWM1 13
 #define PINMOTORPWM2 12
 
-PID PID(2, 0.05, 0.4);
+PID PID(5, 1.2, 0.5);
 
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14};
 float valorsensor[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+float valorsensorant[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-int vel = 150;
-
-SensorCalibration cal(10);
+int vel = 100;
+int smooth = 1;
+SensorCalibration cal(10, 80, 55);
 
 float step = 0;
 
@@ -25,7 +26,10 @@ void setup()
     // put your setup code here, to run once:
     Serial.begin(115200);
     cal.calibrate(2000, analogPins);
-    delay(1000);
+    delay(3000);
+    for (int i = 0; i < 10; i++){
+        valorsensor[i] = cal.getCalibratedValue(i, analogPins);
+    }
 }
 
 void loop()
@@ -36,8 +40,11 @@ void loop()
     
     for (int i = 0; i < 10; i++)
     {
-        valorsensor[i] = cal.getCalibratedValue(i, analogPins);
-        if (valorsensor[i] < 1)
+        
+        valorsensor[i] = (cal.getCalibratedValue(i, analogPins))*0.9 + valorsensorant[i]*0.1;
+        valorsensorant[i] = valorsensor[i];
+
+        if (valorsensor[i] < 0.9)
         {
             valorsensor[i] = 1;
         }
