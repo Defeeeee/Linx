@@ -9,7 +9,7 @@
 #define PINMOTORPWM1 13
 #define PINMOTORPWM2 12
 
-PID PID(2, 0.005, 0.4);
+PID PID(2, 0.05, 0.4);
 
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14};
 float valorsensor[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -47,18 +47,18 @@ void loop()
     {
         if (valorsensor[i] == 1)
         {
-            error++;
+            error--;
         }
     }
     for (int i = 5; i < 10; i++)
     {
         if (valorsensor[i] == 1)
         {
-            error--;
+            error++;
         }
     }
 
-    Serial.print(error);
+    Serial.println(error);
     float output = PID.pid(error, step);
         digitalWrite(PINMOTOR1A, LOW);
         digitalWrite(PINMOTOR1B, HIGH);
@@ -77,7 +77,6 @@ void loop()
         analogWrite(PINMOTORPWM2, vel - abs(output) * vel);
     }
 
-    Serial.println(output);
 
     unsigned long step_micros = micros() - pt;
     step = (float)step_micros / 1000000;
