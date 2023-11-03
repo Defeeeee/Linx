@@ -5,8 +5,8 @@
 > This code is designed and will ONLY work on a certain line-walls scheme, if you want to download just the line follower program check "./LineFollower/LineFollower.ino"
 
 # Contributors
-[@juanpanpanyz] - Juan Baader
+[@juanpanpanyz](https://github.com/juanpanpanyz) - Juan Baader
 <br>
-[@porfi2089]    - Manuel Rao
+[@porfi2089](https://github.com/porfi2089)       - Manuel Rao
 <br>
-[@Defeeeee]     - Federico Diaz Nemeth
+[@Defeeeee](https://github.com/Defeeeee)         - Federico Diaz Nemeth
