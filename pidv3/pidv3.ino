@@ -15,11 +15,20 @@
 #define PINMOTORPWM1 13
 #define PINMOTORPWM2 12
 
-#define wall_distance 40
+#define wall_distance 50
+
+#define R1 22
+#define R2 23
+#define R3 24
+#define G1 25
+#define G2 26
+#define G3 27
+#define B1 28
+#define B2 29
+#define B3 30
 
 PID PID(3, 0.5, 0.3);
 Ultrasonico Ult(trig1, echo1, trig2, echo2);
-
 
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14}; // 10 sensores
 float valorsensor[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 
@@ -143,7 +152,15 @@ void MoverConArray() {
 
             } else if (stop_type[stop_index] == 1) { 
                 Avanzar(-1); 
-                while(Ult.checkF(120)){
+                int f = 0;
+                while(true){
+                    if (Ult.checkF(120)) { 
+                        f = f + 1;
+                    }
+                    if(f += 5){
+                        delay(150);
+                        break;
+                    }
                     delay(10);
                 }
                 stop_index++;
@@ -151,7 +168,15 @@ void MoverConArray() {
                 stops--;
             } else if (stop_type[stop_index] == 2) { 
                 Avanzar(1);
-                while(!Ult.checkF(120)){ 
+                int f = 0;
+                while(true){ 
+                    if (Ult.checkF(120)) { 
+                        f += 1;
+                    }
+                    if(f == 5){
+                        delay(150);
+                        break;
+                    }
                     delay(10);
                 }
                 stop_index++;
