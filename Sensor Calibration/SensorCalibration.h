@@ -5,14 +5,15 @@
 
 class SensorCalibration {
 public:
-  SensorCalibration(int numSensors); // Constructor that accepts the number of sensors
-  void begin();
+  SensorCalibration(int numSensors, int pulseSpd, int Spd); // Constructor that accepts the number of sensors
   void calibrate(int numSamples, int analogPins[]);
-  int getCalibratedValue(int sensorIndex);
+  float getCalibratedValue(int sensorIndex, int analogPins[]);
 
 private:
+  int pulseSpd;
+  int Spd;
   int numSensors;
-  int* sensorValues;
+  long* sensorValues;
 };
 
 #endif
