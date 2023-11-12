@@ -92,14 +92,7 @@ bool onLine()
             n++;
         }
     }
-    if (n > 2)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return n > 2;
 }
 
 // Calculates the error based on the calibrated sensor values.
@@ -110,22 +103,15 @@ int CalcErr()
     for (int i = 0; i < 10; i++)
     {
         valorsensor[i] = cal.getCalibratedValue(i, analogPins);
-
         if (valorsensor[i] < 0.95)
         {
             valorsensor[i] = 1;
         }
-    }
-    for (int i = 0; i < 5; i++)
-    {
-        if (valorsensor[i] == 1)
+        if (i < 5 && valorsensor[i] == 1)
         {
             error--;
         }
-    }
-    for (int i = 5; i < 10; i++)
-    {
-        if (valorsensor[i] == 1)
+        else if (i >= 5 && valorsensor[i] == 1)
         {
             error++;
         }
@@ -189,6 +175,8 @@ void MoverConArray()
         long pt = micros();
         Avanzar(PID.pid(CalcErr(), step) / 15.5);
 
+        step = (micros() - pt) / 1000000.0;
+
         if (stop_type[stop_index] == 0 && !Ult.checkR(50))
         {
             stop_index++;
@@ -233,7 +221,6 @@ void MoverConArray()
             stops--;
             continue;
         }
-        step = (micros() - pt) / 1000000.0;
     }
     stop();
 }
