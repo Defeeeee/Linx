@@ -38,11 +38,10 @@ SensorCalibration cal(10, 150, 90); // 10 sensores, velocidad "80" de impulso, 5
 float step = 0; // tiempo de cada iteracion
 int stop_index = 0;
 
-bool moving = true;
 int stops = 50;
 
 int stop_type[] = {1, 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
-int stop_sensor[] = {2, 2, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 1, 1};  // 1 = izquierdo, 2  = frontal
+
 
 void setup()
 {
@@ -142,105 +141,37 @@ void stop()
 void MoverConArray()
 {
     while (stops != 0)
-    { // mientras no se hayan completado todas las paradas
-        int l = 0;
-        while (moving)
-        {
-            long pt = micros();
-            int error = CalcErr();
-            Avanzar(PID.pid(error, step) / 15.5); // calcula la salida del PID y la divide para que sea un valor entre -1 y 1
+    {
+        long pt = micros();
+        Avanzar(PID.pid(CalcErr(), step) / 15.5);
 
-            if (l == 5)
-            {                                                       // cada 5 iteraciones, comprueba si se debe detener
-                if (stop_sensor[stop_index] == 2 && Ult.checkF(60)) // si el sensor frontal detecta un obstaculo a menos de 50 cm
-                {
-                    moving = false;
-                }
-                else if ((stop_sensor[stop_index] == 1 && !Ult.checkR(80)) || !onLine())
-                {
-                    moving = false;
-                }
-                l = 0;
-            }
-            else
-            {
-                l++;
-            }
-            Serial.println(onLine());
-            unsigned long step_micros = micros() - pt; // calcula el tiempo de cada iteracion
-            step = (float)step_micros / 1000000;       // convierte el tiempo a segundos
-        }
-        // Serial.print("stop index: ");
-        // Serial.print(stop_index);
-        // Serial.print(" stop type:
-        // \.print(stop_type[stop_index]);
-        // Serial.print(" on line: ");
-        // Serial.print(onLine());
-
-        if (stop_type[stop_index] == 0)
-        {
-            stops--;
+        if (stop_type[stop_index] == 0 && !checkR(50)) {
             stop_index++;
-            if (stops != 0) // si no se han completado todas las paradas, continua moviendose
-            {
-                moving = true;
-            }
-            else
-            {
-                moving = false;
-                stop(); // si se han completado todas las paradas, detiene el robot
-                break;
-            }
+            stops--;
+            continue;
         }
-        else if (stop_type[stop_index] == 1)
-        {
+        else if (stop_type[stop_index] == 1 && checkF(50)) {
             Avanzar(-1);
-            int f = 0;
-            while (true)
-            {
-                Serial.println(Ult.checkF(75));
-                if (!Ult.checkF(75))
-                {
-                    f = f + 1;
+            int aux = 0;
+            while (aux < 5) {
+                if (!checkF(50)) {
+                    aux++;
                 }
-                if (f == 5)
-                {
-                    delay(150);
-                    break;
-                }
-                delay(10);
-            }
-
-            stop_index++;
-            moving = true;
-            stops--;
-        }
-        else if (stop_type[stop_index] == 2)
-        {
-            Avanzar(1);
-            int f = 0;
-            while (true)
-            {
-                if (Ult.checkF(200))
-                {
-                    f = f + 1;
-                }
-                if (f == 3)
-                {
-                    delay(200);
-                    break;
-                }
-                delay(10);
+                delay(5);
             }
             stop_index++;
-            moving = true;
             stops--;
-        }
-        else if (stop_type[stop_index] == 3)
-        {
-            stops--;
+            continue;
+        } else if (stop_type[stop_index] == 2 && !checkR(100)) {
             stop_index++;
-            moving = true;
+            stops--;
+            continue;
+        } else if (stop_type[stop_index] == 3) {
+            stop_index++;
+            stops--;
+            continue;
         }
+        step = (micros() - pt) / 1000000.0;
     }
+    stop();
 }
