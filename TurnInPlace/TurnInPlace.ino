@@ -40,7 +40,7 @@ int stop_index = 0;
 
 int stops = 50;
 
-int stop_type[] = {1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
+int stop_type[] = { 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
 
 void setup()
 {
@@ -177,13 +177,14 @@ void MoverConArray()
 
         step = (micros() - pt) / 1000000.0;
 
+
         if (stop_type[stop_index] == 0 && !Ult.checkR(50))
         {
             stop_index++;
             stops--;
             continue;
         }
-        else if (stop_type[stop_index] == 1 && Ult.checkF(40))
+        else if (stop_type[stop_index] == 1 && Ult.checkF(30))
         {
             RotarEnLugar(1);
             int aux = 0;
@@ -194,17 +195,18 @@ void MoverConArray()
                     aux++;
                 }
             }
-            delay(250);
+            delay(50);
             stop_index++;
             continue;
         }
-        else if (stop_type[stop_index] == 2 && !Ult.checkR(130))
+        else if (stop_type[stop_index] == 2 && !Ult.checkR(200))
         {
+            delay(100);
             RotarEnLugar(-1);
             int aux = 0;
             while (aux < 5)
             {
-                if (Ult.checkF(50))
+                if (Ult.checkR(50))
                 {
                     aux++;
                 }
