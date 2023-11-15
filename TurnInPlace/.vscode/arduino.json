@@ -1,5 +1,6 @@
 {
     "configuration": "cpu=atmega2560",
     "board": "arduino:avr:mega",
-    "sketch": "TurningNoMap.ino"
+    "sketch": "TurnInPlace.ino",
+    "port": "/dev/tty.usbmodem1101"
 }

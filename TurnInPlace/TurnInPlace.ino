@@ -32,7 +32,7 @@ Ultrasonico Ult(trig1, echo1, trig2, echo2);
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14};
 float valorsensor[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-int vel = 255;
+int vel = 200;
 SensorCalibration cal(10, 150, 90);
 
 float step = 0;
@@ -40,7 +40,7 @@ int stop_index = 0;
 
 int stops = 50;
 
-int stop_type[] = {1, 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
+int stop_type[] = {1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
 
 void setup()
 {
@@ -183,33 +183,32 @@ void MoverConArray()
             stops--;
             continue;
         }
-        else if (stop_type[stop_index] == 1 && Ult.checkF(50))
-        {
-            RotarEnLugar(-1);
-            int aux = 0;
-            while (aux < 5)
-            {
-                if (!Ult.checkF(50))
-                {
-                    aux++;
-                }
-                delay(5);
-            }
-            stop_index++;
-            stops--;
-            continue;
-        }
-        else if (stop_type[stop_index] == 2 && !Ult.checkR(100))
+        else if (stop_type[stop_index] == 1 && Ult.checkF(40))
         {
             RotarEnLugar(1);
             int aux = 0;
             while (aux < 5)
             {
-                if (!Ult.checkF(50))
+                if (!Ult.checkF(60))
                 {
                     aux++;
                 }
-                delay(5);
+            }
+            delay(250);
+            stop_index++;
+            stops--;
+            continue;
+        }
+        else if (stop_type[stop_index] == 2 && !Ult.checkR(130))
+        {
+            RotarEnLugar(-1);
+            int aux = 0;
+            while (aux < 5)
+            {
+                if (Ult.checkF(50))
+                {
+                    aux++;
+                }
             }
             stop_index++;
             stops--;

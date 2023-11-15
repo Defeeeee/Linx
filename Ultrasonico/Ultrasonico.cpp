@@ -49,7 +49,7 @@ float Ultrasonico :: distanciaF(){
 }
 
 bool Ultrasonico :: checkR(int distance){
-    if (distanciaR() > distance) {
+    if (distanciaR() < distance) {
         return true;
     } else {
         return false;
