@@ -196,7 +196,6 @@ void MoverConArray()
             }
             delay(250);
             stop_index++;
-            stops--;
             continue;
         }
         else if (stop_type[stop_index] == 2 && !Ult.checkR(130))
@@ -211,7 +210,6 @@ void MoverConArray()
                 }
             }
             stop_index++;
-            stops--;
             continue;
         }
         else if (stop_type[stop_index] == 3)
