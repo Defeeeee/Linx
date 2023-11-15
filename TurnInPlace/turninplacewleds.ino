@@ -16,16 +16,6 @@
 
 #define wall_distance 50
 
-#define R1 22
-#define R2 23
-#define R3 24
-#define G1 25
-#define G2 26
-#define G3 27
-#define B1 28
-#define B2 29
-#define B3 30
-
 PID PID(3, 0.5, 0.3);
 Ultrasonico Ult(trig1, echo1, trig2, echo2);
 
