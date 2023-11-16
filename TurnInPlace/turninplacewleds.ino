@@ -225,7 +225,7 @@ void MoverConArray()
         {
             RotarEnLugar(1);
             int aux = 0;
-            while (aux < 3)
+            while (aux < 5)
             {
                 if (!Ult.checkF(60))
                 {
