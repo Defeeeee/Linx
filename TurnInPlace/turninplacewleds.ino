@@ -16,21 +16,21 @@
 
 #define wall_distance 50
 
-PID PID(3, 0.5, 0.3);
+PID PID(5, 0.5, 0.4);
 Ultrasonico Ult(trig1, echo1, trig2, echo2);
 
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14};
 float valorsensor[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-int vel = 200;
-SensorCalibration cal(10, 150, 90);
+int vel = 210;
+SensorCalibration cal(10, 250, 100);
 
 float step = 0;
 int stop_index = 0;
 
-int stops = 50;
+int stops = 5;
 
-int stop_type[] = { 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
+int stop_type[] = {1, 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
 
 // LEDS
 const int pinLedrojo1 = 30;
@@ -205,35 +205,44 @@ void MoverConArray()
         {
             stop_index++;
             stops--;
+            // if(stops == 0){
+            //     stop();
+            //     return;
+            // }else{
+            //     int v = 0;
+            //     while(v < 5){
+            //         long pt = micros();
+            //         if(Ult.checkR(50)){
+            //             v++;
+            //         }
+            //     Avanzar(PID.pid(CalcErr(), step) / 15.5);
+            //     step = (micros() - pt) / 1000000.0;
+            // }
             continue;
+            //}
         }
         else if (stop_type[stop_index] == 1 && Ult.checkF(30))
         {
             RotarEnLugar(1);
             int aux = 0;
-            while (aux < 5)
+            while (aux < 3)
             {
                 if (!Ult.checkF(60))
                 {
                     aux++;
                 }
             }
-            delay(50);
             stop_index++;
             continue;
         }
         else if (stop_type[stop_index] == 2 && !Ult.checkR(200))
         {
-            delay(100);
+            delay(650);
             RotarEnLugar(-1);
-            int aux = 0;
-            while (aux < 5)
-            {
-                if (Ult.checkR(50))
-                {
-                    aux++;
-                }
-            }
+            delay(1200);
+            // while (CalcErr() >= 5) {
+            //     delay(5);
+            // }
             stop_index++;
             continue;
         }

@@ -1,6 +1,6 @@
 {
     "configuration": "cpu=atmega2560",
     "board": "arduino:avr:mega",
-    "sketch": "TurnInPlace.ino",
+    "sketch": "turninplacewleds.ino",
     "port": "/dev/tty.usbmodem1101"
 }
