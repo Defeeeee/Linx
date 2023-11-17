@@ -197,16 +197,16 @@ void MoverConArray()
                     aux++;                                                                                                      
                 }
             }
-            delay(40);
+            delay(15);
             stop_index++;
             continue;
         }
         else if (stop_type[stop_index] == 2 && !Ult.checkR(150))
         {
             Serial.println("Rotating right");
-            delay(750);
+            delay(850);
             RotarEnLugar(-1);
-            delay(1200);
+            delay(1000);
             // while (CalcErr() >= 5) {
             //     delay(5);
             // }
