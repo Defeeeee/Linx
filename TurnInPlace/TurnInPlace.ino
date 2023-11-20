@@ -174,6 +174,7 @@ void MoverConArray()
     {
         long pt = micros();
         Avanzar(PID.pid(CalcErr(), step) / 15.5);
+        Serial.println(PID.pid(CalcErr(), step) / 15.5);
 
         step = (micros() - pt) / 1000000.0;
 
@@ -190,21 +191,21 @@ void MoverConArray()
             Serial.println("Rotating left");
             RotarEnLugar(1);
             int aux = 0;
-            while (aux < 5)
+            while (aux < 3)
             {
                 if (!Ult.checkF(70))
                 {
                     aux++;                                                                                                      
                 }
             }
-            delay(15);
             stop_index++;
             continue;
         }
         else if (stop_type[stop_index] == 2 && !Ult.checkR(150))
         {
+
             Serial.println("Rotating right");
-            delay(850);
+            delay(750);
             RotarEnLugar(-1);
             delay(1000);
             // while (CalcErr() >= 5) {

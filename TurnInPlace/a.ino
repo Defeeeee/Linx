@@ -49,6 +49,10 @@
 
 // void loop()
 // {
-//     Serial.println(Ult.checkR(200));
+//           Serial.println("CheckF: ");
+//         Serial.println(Ult.distanciaF());
+//         Serial.println("CheckR: ");
+//         Serial.println(Ult.distanciaR());
+//         Serial.println("");
 // }
 
