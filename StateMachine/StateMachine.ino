@@ -120,12 +120,12 @@ void setup()
 void loop()
 {
     // Check for serial input
-    if (Serial.available()) {
-        char input = Serial.read();
-        if (input == "stop") {
-            currentState = STOP;
-        }
-    }
+    // if (Serial.available()) {
+    //     char input = Serial.read();
+    //     if (input == "stop") {
+    //         currentState = STOP;
+    //     }
+    // }
 
     // State machine
     switch (currentState) {
