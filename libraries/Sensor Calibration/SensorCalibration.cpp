@@ -15,6 +15,12 @@ SensorCalibration::SensorCalibration(int numSensors, int pulseSpd, int Spd) {
   this->Spd = Spd;
 }
 
+/**
+ * Calibrates the sensors by taking multiple samples and averaging the readings.
+ * 
+ * @param numSamples The number of samples to take for each sensor.
+ * @param analogPins An array of analog pins corresponding to the sensors.
+ */
 
 void SensorCalibration::calibrate(int numSamples, int analogPins[]) {
   digitalWrite(PINMOTOR1A, LOW);

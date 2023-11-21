@@ -12,6 +12,18 @@ PID :: PID(float _Kp, float _Ki, float _Kd, bool _clampie = true, float _maxie =
     mind = _mind;
 }
 
+/**
+ * Calculates the output of the PID controller based on the error and the time step.
+ *
+ * @param e The error value.
+ * @param step The time step.
+ * @return The calculated output of the PID controller.
+ * @see https://en.wikipedia.org/wiki/PID_controller
+ * @see https://en.wikipedia.org/wiki/Control_theory
+ * 
+ * @author Manuel Rao
+ */
+
 float PID :: pid(float e, float step){
     //integration
     ie = ie + e;

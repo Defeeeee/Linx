@@ -1,5 +1,17 @@
 #include <Ultrasonico.h>
 
+/**
+ * @brief Constructor for the Ultrasonico class.
+ * 
+ * This constructor initializes the Ultrasonico object with the specified trigger and echo pins for the right and front sensors.
+ * It sets the pin modes for the trigger and echo pins.
+ * 
+ * @param _trigPinR The pin number for the right sensor's trigger pin.
+ * @param _echoPinR The pin number for the right sensor's echo pin.
+ * @param _trigPinF The pin number for the front sensor's trigger pin.
+ * @param _echoPinF The pin number for the front sensor's echo pin.
+ */
+
 Ultrasonico :: Ultrasonico(int _trigPinR, int _echoPinR, int _trigPinF, int _echoPinF){
     trigPinR = _trigPinR;
     echoPinR = _echoPinR;

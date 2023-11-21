@@ -71,13 +71,23 @@ RobotState currentState = CALIBRATION;
 #define PINMOTOR2A 10
 #define PINMOTOR2B 11
 
-#define trig2 2
-#define echo2 3
-#define trig1 4
-#define echo1 5
+#define trig2 5
+#define echo2 4
+#define trig1 3
+#define echo1 2
 
 #define PINMOTORPWM1 13
 #define PINMOTORPWM2 12
+
+#define pinLedrojo1 = 30;
+#define pinLedverde1 = 32;
+#define pinLedazul1 = 34;
+#define pinLedazul2 = 40;
+#define pinLedverde2 = 41;
+#define pinLedrojo2 = 42;
+#define pinLedazul3 = 43;
+#define pinLedrojo3 = 44;
+#define pinLedverde3 = 45;
 
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14};
 
@@ -95,7 +105,9 @@ int vel = 200;
 float step = 0; // Time step
 int stop_index = 0; // Current stop index
 
-int stops = 5; // Total number of stops
+int stops = 50; // Total number of stops
+
+int current_stop = 0; // Current stop
 
 int stop_type[] = { 1, 2, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 1, 2, 0, 0, 1, 1, 0, 0, 1, 2, 3, 0, 0, 0}; // 0 = aula, 1 = izquierda, 2 = derecha, 3 = ?
 int wall_distance[] = { 30, 150, 150, 150, 150, 150, 250, 30, 150, 150, 150, 150, 150, 30, 150, 150, 150, 50, 30, 150, 150, 30, 150, 200, 150, 150, 150}; // Distancia de la pared
@@ -135,10 +147,17 @@ void loop()
 // State functions
 void idleState() {
     if (Serial.available()) {
-        char input = Serial.read();
-        if (input == 'a') { // TODO: Change this to the actual input
-            currentState = LINE_FOLLOWING;
-        }
+        int input = Serial.parseInt();
+        stops = input;
+        // stops = input - current_stop;
+        // if (stops < 0) {
+        //     stops = stops + 15;
+        // }
+        // current_stop = stops + current_stop;
+        // if (current_stop > 15) {
+        //     current_stop = current_stop - 15;
+        // }
+        currentState = LINE_FOLLOWING;
     }
 }
 
@@ -150,6 +169,16 @@ void calibrationState() {
 }
 
 void lineFollowingState() {
+    digitalWrite(pinLedrojo1, LOW);
+    digitalWrite(pinLedrojo2, LOW);
+    digitalWrite(pinLedrojo3, LOW);
+    digitalWrite(pinLedazul1, LOW);
+    digitalWrite(pinLedazul2, LOW);
+    digitalWrite(pinLedazul3, LOW);
+
+    digitalWrite(pinLedverde1, HIGH);
+    digitalWrite(pinLedverde2, HIGH);
+    digitalWrite(pinLedverde3, HIGH);
     Serial.println("Line following...");
     if (stops > 0) {
 
@@ -195,6 +224,18 @@ void lineFollowingState() {
 
 void StopState()
 {
+    // PRENDO LEDS ROJOS
+    digitalWrite(pinLedrojo1, HIGH);
+    digitalWrite(pinLedrojo2, HIGH);
+    digitalWrite(pinLedrojo3, HIGH);
+    // APAGO EL RESTO DE LEDS
+    digitalWrite(pinLedverde1, LOW);
+    digitalWrite(pinLedverde2, LOW);
+    digitalWrite(pinLedverde3, LOW);
+    digitalWrite(pinLedazul1, LOW);
+    digitalWrite(pinLedazul2, LOW);
+    digitalWrite(pinLedazul3, LOW);
+
     digitalWrite(PINMOTOR1A, LOW);
     digitalWrite(PINMOTOR1B, LOW);
     digitalWrite(PINMOTOR2A, LOW);
