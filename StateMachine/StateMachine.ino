@@ -139,7 +139,7 @@ void loop()
             lineFollowingState();
             break;
         case STOP:
-            StopState();
+            stopState();
             break;
     }
 }
@@ -183,7 +183,7 @@ void lineFollowingState() {
     if (stops > 0) {
 
         long pt = micros();
-        Avanzar(PID.pid(CalcErr(), step) / 15.5);
+        Avanzar(PID.pid(calcErr(), step) / 15.5);
         step = (micros() - pt) / 1000000.0;
 
         switch (stop_type[stop_index]) {
@@ -222,7 +222,7 @@ void lineFollowingState() {
     }
 }
 
-void StopState()
+void stopState()
 {
     // PRENDO LEDS ROJOS
     digitalWrite(pinLedrojo1, HIGH);
@@ -269,7 +269,7 @@ void RotarEnLugar(int dir)
 
 // Calculates the error based on the calibrated sensor values.
 // Returns the calculated error.
-int CalcErr()
+int calcErr()
 {
     int error = 0;
     for (int i = 0; i < 10; i++)
