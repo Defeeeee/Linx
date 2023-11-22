@@ -18,8 +18,6 @@ PID :: PID(float _Kp, float _Ki, float _Kd, bool _clampie = true, float _maxie =
  * @param e The error value.
  * @param step The time step.
  * @return The calculated output of the PID controller.
- * @see https://en.wikipedia.org/wiki/PID_controller
- * @see https://en.wikipedia.org/wiki/Control_theory
  * 
  * @author Manuel Rao
  */
