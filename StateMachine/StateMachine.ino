@@ -79,15 +79,15 @@ RobotState currentState = CALIBRATION;
 #define PINMOTORPWM1 13
 #define PINMOTORPWM2 12
 
-#define pinLedrojo1 = 30;
-#define pinLedverde1 = 32;
-#define pinLedazul1 = 34;
-#define pinLedazul2 = 40;
-#define pinLedverde2 = 41;
-#define pinLedrojo2 = 42;
-#define pinLedazul3 = 43;
-#define pinLedrojo3 = 44;
-#define pinLedverde3 = 45;
+#define pinLedrojo1 30
+#define pinLedverde1 32
+#define pinLedazul1 34
+#define pinLedazul2 40
+#define pinLedverde2 41
+#define pinLedrojo2 42
+#define pinLedazul3 43
+#define pinLedrojo3 44
+#define pinLedverde3 45
 
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14};
 
