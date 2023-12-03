@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+747c94dea4248125c33043c8947b7a1f CMakeFiles/StateMachineCLion-size
+b8a72d2ab2b2f69aab54a8a6fb2d7eda CMakeFiles/StateMachineCLion-upload
+4299a1f1d05ed0519ddf606e283a92c7 StateMachineCLion_state_machine_clion.ino.cpp

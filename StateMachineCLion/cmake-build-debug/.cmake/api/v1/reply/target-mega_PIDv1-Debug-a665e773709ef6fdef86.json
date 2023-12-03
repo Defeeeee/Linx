@@ -1,0 +1,206 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "libmega_PIDv1.a"
+		}
+	],
+	"backtrace" : 4,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"setup_arduino_library",
+			"setup_arduino_libraries",
+			"generate_arduino_firmware",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"cmake/Platform/Arduino.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 43,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 505,
+				"parent" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1131,
+				"parent" : 2
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1060,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 1095,
+				"parent" : 3
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1061,
+				"parent" : 3
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1062,
+				"parent" : 3
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1063,
+				"parent" : 3
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 1131,
+				"parent" : 2
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1061,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1062,
+				"parent" : 9
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1063,
+				"parent" : 9
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -std=gnu++98 -fdiagnostics-color=always"
+				},
+				{
+					"fragment" : " -DF_CPU=16000000L -DARDUINO=10819 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -mmcu=atmega2560 -I\"/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino\" -I\"/Applications/Arduino.app/Contents/Java/libraries\" -I\"/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/variants/mega\"  -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1/src\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1/utility\"  -I\"/Users/defeee/Documents/GitHub/FedeEsMalo/StateMachineCLion\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1/src\" -I\"/Users/defeee/Documents/Arduino/libraries/Ultrasonico\" -I\"/Users/defeee/Documents/Arduino/libraries/Ultrasonico/src\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 6,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1/src"
+				},
+				{
+					"backtrace" : 8,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1/utility"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/Ultrasonico"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/Ultrasonico/src"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/Ultrasonico/utility"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					4
+				],
+				"standard" : "98"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 5,
+			"id" : "mega_CORE::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "mega_PIDv1::@6890427a1f51a3e7e1df",
+	"name" : "mega_PIDv1",
+	"nameOnDisk" : "libmega_PIDv1.a",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1/PIDv1.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1/PIDv1.h",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

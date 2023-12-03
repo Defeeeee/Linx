@@ -32,7 +32,7 @@ Ultrasonico Ult(trig1, echo1, trig2, echo2);
 int analogPins[] = {A5, A6, A7, A8, A9, A10, A11, A12, A13, A14}; // 10 sensores
 float valorsensor[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-int vel = 255;                      // 0-255
+int vel = 220;                      // 0-255
 SensorCalibration cal(10, 150, 90); // 10 sensores, velocidad "80" de impulso, 55 de constante
 
 float step = 0; // tiempo de cada iteracion

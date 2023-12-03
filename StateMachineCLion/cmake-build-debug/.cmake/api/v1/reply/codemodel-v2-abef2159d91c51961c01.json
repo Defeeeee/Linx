@@ -1,0 +1,114 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "StateMachineCLion",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "StateMachineCLion::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-StateMachineCLion-Debug-62d756ca47f55add3dd7.json",
+					"name" : "StateMachineCLion",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "StateMachineCLion-size::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-StateMachineCLion-size-Debug-017efe6e410dfecac96c.json",
+					"name" : "StateMachineCLion-size",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "StateMachineCLion-upload::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-StateMachineCLion-upload-Debug-151145b73fd29954043b.json",
+					"name" : "StateMachineCLion-upload",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mega_CORE::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mega_CORE-Debug-808e7b2e28e862125a4d.json",
+					"name" : "mega_CORE",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mega_PIDv1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mega_PIDv1-Debug-a665e773709ef6fdef86.json",
+					"name" : "mega_PIDv1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "mega_Ultrasonico::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mega_Ultrasonico-Debug-720f29eee183a999e692.json",
+					"name" : "mega_Ultrasonico",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "upload::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-upload-Debug-73714b933982caf5431d.json",
+					"name" : "upload",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/defeee/Documents/GitHub/FedeEsMalo/StateMachineCLion/cmake-build-debug",
+		"source" : "/Users/defeee/Documents/GitHub/FedeEsMalo/StateMachineCLion"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

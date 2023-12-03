@@ -1,0 +1,281 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "StateMachineCLion.elf"
+		}
+	],
+	"backtrace" : 3,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"setup_arduino_target",
+			"generate_arduino_firmware",
+			"link_directories",
+			"target_link_libraries",
+			"include_directories",
+			"setup_arduino_library",
+			"setup_arduino_libraries"
+		],
+		"files" : 
+		[
+			"cmake/Platform/Arduino.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 43,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 514,
+				"parent" : 1
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 1159,
+				"parent" : 2
+			},
+			{
+				"command" : 3,
+				"file" : 1,
+				"line" : 27,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 1167,
+				"parent" : 2
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 505,
+				"parent" : 1
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 1131,
+				"parent" : 6
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1061,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1062,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1063,
+				"parent" : 7
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 1131,
+				"parent" : 6
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1061,
+				"parent" : 11
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1062,
+				"parent" : 11
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 1063,
+				"parent" : 11
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -std=gnu++98 -fdiagnostics-color=always"
+				},
+				{
+					"fragment" : " -DF_CPU=16000000L -DARDUINO=10819 -DARDUINO_AVR_MEGA2560 -DARDUINO_ARCH_AVR -mmcu=atmega2560 -I\"/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/cores/arduino\" -I\"/Applications/Arduino.app/Contents/Java/libraries\" -I\"/Applications/Arduino.app/Contents/Java/hardware/arduino/avr/variants/mega\"  -I\"/Users/defeee/Documents/GitHub/FedeEsMalo/StateMachineCLion\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1/src\" -I\"/Users/defeee/Documents/Arduino/libraries/Ultrasonico\" -I\"/Users/defeee/Documents/Arduino/libraries/Ultrasonico/src\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1/src\" -I\"/Users/defeee/Documents/Arduino/libraries/PIDv1/utility\" -I\"/Users/defeee/Documents/Arduino/libraries/Ultrasonico\" -I\"/Users/defeee/Documents/Arduino/libraries/Ultrasonico/src\" -I\"/Users/defeee/Documents/Arduino/libraries/Ultrasonico/utility\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 8,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1/src"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/PIDv1/utility"
+				},
+				{
+					"backtrace" : 12,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/Ultrasonico"
+				},
+				{
+					"backtrace" : 13,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/Ultrasonico/src"
+				},
+				{
+					"backtrace" : 14,
+					"path" : "/Users/defeee/Documents/Arduino/libraries/Ultrasonico/utility"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					3
+				],
+				"standard" : "98"
+			},
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 5,
+			"id" : "mega_CORE::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "mega_PIDv1::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 5,
+			"id" : "mega_Ultrasonico::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "StateMachineCLion::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-w -Os -Wl,--gc-sections -w -Os -Wl,--gc-sections  -mmcu=atmega2560",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-L/Users/defeee/Documents/Arduino/libraries",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "libmega_PIDv1.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "libmega_Ultrasonico.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "libmega_CORE.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-lc -lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "StateMachineCLion",
+	"nameOnDisk" : "StateMachineCLion.elf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 3,
+			"path" : "state_machine_clion.ino",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/StateMachineCLion_state_machine_clion.ino.cpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/StateMachineCLion_state_machine_clion.ino.cpp.rule",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "EXECUTABLE"
+}

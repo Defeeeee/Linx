@@ -8,9 +8,9 @@
  * The robot has different states such as IDLE, CALIBRATION, LINE_FOLLOWING, and STOP.
  * It uses sensor calibration, PID control, and ultrasonic sensors for line following and obstacle detection.
  * The robot can be controlled through serial communication.
- * 
+ *
  * @author Manuel Rao, Federico Diaz Nemeth
- * 
+ *
  * @details
  * The state machine transitions between different states based on the current state and input received through serial communication.
  * The robot starts in the CALIBRATION state where it calibrates the sensors.
@@ -18,7 +18,7 @@
  * In the LINE_FOLLOWING state, the robot follows a line using PID control and detects obstacles using ultrasonic sensors.
  * It stops at predefined stops based on the stop type and wall distance.
  * Once all stops are completed, it transitions to the STOP state where it stops the motors and returns to the IDLE state.
- * 
+ *
  * The robot uses the following pins for motor control and sensor connections:
  * - Motor 1A: Pin 8
  * - Motor 1B: Pin 9
@@ -30,32 +30,32 @@
  * - Ultrasonic Sensor 2 Echo: Pin 3
  * - Motor 1 PWM: Pin 13
  * - Motor 2 PWM: Pin 12
- * 
+ *
  * The robot uses a PID controller for line following, with the following PID constants:
  * - Proportional Gain: 3
  * - Integral Gain: 0.5
  * - Derivative Gain: 0.3
- * 
+ *
  * The robot also uses sensor calibration to calibrate the sensor values.
  * It uses 10 analog pins for sensor readings and stores the calibrated values in an array.
- * 
+ *
  * The robot has a total of 5 stops, each with a stop type and wall distance.
  * The stop types are defined as follows:
  * - 0: Aula
  * - 1: Left
  * - 2: Right
  * - 3: Unknown
- * 
+ *
  * The wall distances are defined for each stop and determine when the robot should stop or change direction.
- * 
+ *
  * The robot's main loop checks for serial input and transitions between states based on the input and current state.
  * The robot also has helper functions for each state and motor control.
- * 
+ *
  * @note This code is for illustrative purposes and may require additional modifications for specific robot configurations.
  */
 
 // States
-enum RobotState { 
+enum RobotState {
     IDLE,
     CALIBRATION,
     LINE_FOLLOWING,
@@ -183,7 +183,7 @@ void lineFollowingState() {
     if (stops > 0) {
 
         long pt = micros();
-        Avanzar(PID.pid(calcErr(), step) / 15.5);
+        Avanzar(0);
         step = (micros() - pt) / 1000000.0;
 
         switch (stop_type[stop_index]) {
