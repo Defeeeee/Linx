@@ -91,12 +91,6 @@ float step = 0; // Time step
 void setup()
 {
     Serial.begin(115200);
-  Serial.begin(115200);
-  myController.begin(&input, &output, &setpoint, p, i, d);
-  myController.setOutputLimits(-25500, 255000);
-  myController.setBias(255.0 / 2.0);
-  myController.setWindUpLimits(-100, 100); 
-  myController.start();
   
   // ADD MORE CONFIGURATION COMMANDS HERE <--------------------
 }
@@ -136,7 +130,7 @@ void calibrationState() {
     currentState = IDLE;
 }
 
-void lineFollowingState(int err) {
+void lineFollowingState() {
     // Serial.println("Line following...");
         long pt = micros();
         // Avanzar(PID.pid(calcErr(), step));
@@ -207,7 +201,7 @@ void Avanzar(float output)
     if (output > 0) // Turn Right
     {
         analogWrite(PINMOTORPWM1, vel - output * vel);
-        analogWrite(PINMOTORPWM2, vel - output * vel);
+        analogWrite(PINMOTORPWM2, vel + output * vel);
     }
     else if (output < 0) // Turn Left
     {
