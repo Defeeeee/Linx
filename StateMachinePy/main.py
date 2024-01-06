@@ -1,11 +1,26 @@
+# --------------------------------------------------------------------------------
+# File Name: main.py
+# Authors: Federico Diaz Nemeth
+# Date: 2024-01-06
+# Description:
+#   This Python code controls a robot's line following, calibration, and stopping
+#   behaviors using a state machine approach. It communicates with an Arduino
+#   board for motor control and sensor readings. The code employs PID control for
+#   accurate line following and integrates sensor calibration for reliable readings.
+# --------------------------------------------------------------------------------
+
+# Import libraries
 import timeit
 from time import sleep
 import pyfirmata2
 from enum import Enum
-import libs.PID
-import libs.Calibration
+import libs.PID  # Import PID library
+import libs.Calibration  # Import Calibration library
 
 
+# --------------------------------------------------------------------------------
+# Define different states for the robot's behavior
+# --------------------------------------------------------------------------------
 class RobotState(Enum):
     IDLE = 0,
     CALIBRATION = 1,
@@ -13,35 +28,47 @@ class RobotState(Enum):
     STOP = 3
 
 
-# Create a new board, specifying serial port
+# --------------------------------------------------------------------------------
+# Arduino setup
+# --------------------------------------------------------------------------------
+
 port = pyfirmata2.Arduino.AUTODETECT
 board = pyfirmata2.Arduino(port)
-board.samplingOn(1)
+board.samplingOn(1)  # Enable analog input sampling
 
-# Create a new PID controller
+# --------------------------------------------------------------------------------
+# PID and Calibration objects
+# --------------------------------------------------------------------------------
 pid = libs.PID.PID(0.5, 0.5, 0.3)
 calibration = libs.Calibration.Calibration(board, 10, 150, 90)
 
-currentState = RobotState.CALIBRATION
+# --------------------------------------------------------------------------------
+# Variable and pin definitions
+# --------------------------------------------------------------------------------
+currentState = RobotState.CALIBRATION  # Set the initial state
 
-PINMOTOR1A = 'd:8:o'
-PINMOTOR1B = 'd:9:o'
-PINMOTOR2A = 'd:10:o'
-PINMOTOR2B = 'd:11:o'
+# Define the pins used for the motors and PWM signals
+right_motor_bwd = 'd:8:o'
+right_motor_fwd = 'd:9:o'
+left_motor_bwd = 'd:10:o'
+left_motor_fwd = 'd:11:o'
+right_motor_pwm = 'd:13:p'
+left_motor_pwm = 'd:12:p'
 
-PINMOTORPWM1 = 'd:13:p'
-PINMOTORPWM2 = 'd:12:p'
-
+# Define the pins used for the sensors
 analogPins = ['a:5:i', 'a:6:i', 'a:7:i', 'a:8:i', 'a:9:i', 'a:10:i', 'a:11:i', 'a:12:i', 'a:13:i', 'a:14:i']
 
-sensorValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+# Define the variables used for the PID controller
+sensorValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Array to store the sensor values
+baseSpeed = 120  # Base speed for the motors
+step = 0  # Time step for the PID controller
 
-baseSpeed = 120
 
-step = 0
-
-
+# --------------------------------------------------------------------------------
+# Functions
+# --------------------------------------------------------------------------------
 def err():
+    # Function to calculate the error based on the sensor values
     error = 0
     for i in range(10):
         sensorValues[i] = calibration.getvalue(i, analogPins)
@@ -54,21 +81,25 @@ def err():
 
 
 def Avanzar(output):
-    board.digital[PINMOTOR1A].write(0)
-    board.digital[PINMOTOR1B].write(1)
-    board.digital[PINMOTOR2A].write(0)
-    board.digital[PINMOTOR2B].write(1)
-    if output > 0:
-        board.digital[PINMOTORPWM1].write(baseSpeed + output * baseSpeed)
-        board.digital[PINMOTORPWM2].write(baseSpeed - output * baseSpeed)
-    elif output < 0:
-        board.digital[PINMOTORPWM1].write(baseSpeed - abs(output) * baseSpeed)
-        board.digital[PINMOTORPWM2].write(baseSpeed + abs(output) * baseSpeed)
-    else:
-        board.digital[PINMOTORPWM1].write(baseSpeed)
-        board.digital[PINMOTORPWM2].write(baseSpeed)
+    # Function to move the robot based on the output of the PID controller
+    board.digital[right_motor_bwd].write(0)
+    board.digital[right_motor_fwd].write(1)
+    board.digital[left_motor_bwd].write(0)
+    board.digital[left_motor_fwd].write(1)
+    if output > 0:  # If the output is positive, turn right
+        board.digital[right_motor_pwm].write(baseSpeed + output * baseSpeed)
+        board.digital[left_motor_pwm].write(baseSpeed - output * baseSpeed)
+    elif output < 0:  # If the output is negative, turn left
+        board.digital[right_motor_pwm].write(baseSpeed - abs(output) * baseSpeed)
+        board.digital[left_motor_pwm].write(baseSpeed + abs(output) * baseSpeed)
+    else:  # If the output is zero, go straight
+        board.digital[right_motor_pwm].write(baseSpeed)
+        board.digital[left_motor_pwm].write(baseSpeed)
 
 
+# --------------------------------------------------------------------------------
+# State Machine functions
+# --------------------------------------------------------------------------------
 def idleState():
     print("Idle state")
     sleep(1)
@@ -79,7 +110,7 @@ def idleState():
 def calibrationState():
     print("Calibration state")
     global sensorValues
-    sensorValues = calibration.calibrate(2000, analogPins)
+    sensorValues = calibration.calibrate(2000, analogPins)  # Calibrate the sensors
     sleep(3)
     global currentState
     currentState = RobotState.IDLE
@@ -87,21 +118,25 @@ def calibrationState():
 
 def lineFollowingState():
     global step
+    # getting the step using timeit function to get the function running time in microseconds
     step = timeit.timeit(stmt='Avanzar(pid.calculate(err(), step))', globals=globals(), number=1) / 1000000
 
 
 def stopState():
     print("Stop state")
-    board.digital[PINMOTORPWM1].write(0)
-    board.digital[PINMOTORPWM2].write(0)
-    board.digital[PINMOTOR1B].write(0)
-    board.digital[PINMOTOR2B].write(0)
+    board.digital[right_motor_pwm].write(0)
+    board.digital[left_motor_pwm].write(0)
+    board.digital[right_motor_fwd].write(0)
+    board.digital[left_motor_fwd].write(0)
     global currentState
     currentState = RobotState.IDLE
 
 
+# --------------------------------------------------------------------------------
+# Main loop
+# --------------------------------------------------------------------------------
 while True:
-    match currentState:
+    match currentState:  # Switch statement to change the state of the robot
         case RobotState.IDLE:
             idleState()
         case RobotState.CALIBRATION:
