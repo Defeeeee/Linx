@@ -1,10 +1,10 @@
-# FedeEsMalo 🇬🇧
+# FEM 🇬🇧
  Autonomous robot, follows a black line using 10 CNY70 emmiter - phototransistor sensors. It will also be equipped with two ultrasonic sensors to measure the distance to the wall on front and on the wall
  
 > [!NOTE]
 > This code is designed and will ONLY work on a certain line-walls scheme, if you want to download just the line follower program check "./LineFollower/LineFollower.ino"
 
-# FedeEsMalo 🇪🇸
+# FEM 🇪🇸
  Robot autonomo que sigue una linea negra en el piso utilizando 10 emisores - fototransistores CNY70. Ademas esta equipado con dos sensores ultrasonicos para medir la distancia a la pared que tiene enfrente y la pared a su derecha.
  
 > [!NOTE]
