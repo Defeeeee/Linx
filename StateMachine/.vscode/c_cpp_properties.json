@@ -17,10 +17,12 @@
             "intelliSenseMode": "gcc-x64",
             "includePath": [
                 "/Users/defeee/Library/Arduino15/packages/arduino/hardware/avr/1.8.6/cores/arduino",
-                "/Users/defeee/Library/Arduino15/packages/arduino/hardware/avr/1.8.6/variants/mega",
+                "/Users/defeee/Library/Arduino15/packages/arduino/hardware/avr/1.8.6/variants/standard",
                 "/Users/defeee/Documents/Arduino/libraries/SensorCalibration",
                 "/Users/defeee/Documents/Arduino/libraries/PIDv1",
                 "/Users/defeee/Documents/Arduino/libraries/Ultrasonico",
+                "/Users/defeee/Documents/Arduino/libraries/ArduPID/src",
+                "/Users/defeee/Documents/Arduino/libraries/FireTimer/src",
                 "/Users/defeee/Library/Arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include",
                 "/Users/defeee/Library/Arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/lib/gcc/avr/7.3.0/include-fixed",
                 "/Users/defeee/Library/Arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/avr/include"
@@ -33,7 +35,7 @@
             "defines": [
                 "F_CPU=16000000L",
                 "ARDUINO=10607",
-                "ARDUINO_AVR_MEGA2560",
+                "ARDUINO_AVR_UNO",
                 "ARDUINO_ARCH_AVR",
                 "__DBL_MIN_EXP__=(-125)",
                 "__HQ_FBIT__=15",

@@ -1,5 +1,5 @@
 {
-    "configuration": "cpu=atmega2560",
-    "board": "arduino:avr:mega",
-    "sketch": "StateMachine.ino"
+    "board": "arduino:avr:uno",
+    "sketch": "StateMachine.ino",
+    "port": "/dev/tty.usbmodem1101"
 }
