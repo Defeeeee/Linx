@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------
 # File Name: main.py
 # Authors: Federico Diaz Nemeth
-# Date: 2024-01-06
+# Date: 2024-02-08
 # Description:
 #   This Python code controls a robot's line following, calibration, and stopping
 #   behaviors using a state machine approach. It communicates with an Arduino
@@ -9,6 +9,11 @@
 #   accurate line following and integrates sensor calibration for reliable readings.
 # --------------------------------------------------------------------------------
 import random
+
+import os.path
+import csv
+import shutil
+import numpy as np
 
 from QLearn import *
 from pins import *
@@ -30,6 +35,49 @@ D = 0.3
 
 sensor_weights = [5, 4, 3, 2, 1, -1, -2, -3, -4, -5]
 
+# --------------------------------------------------------------------------------
+# Saving and loading the Q-table
+# --------------------------------------------------------------------------------
+
+def save_q_table(Q, filename='q_table.csv'):
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        for state in Q:
+            writer.writerow([state] + Q[state].tolist())
+
+def load_q_table(filename='q_table.csv'):
+    Q = np.zeros((len(states), len(actions)))  # Initialize with your state/action dimensions
+    with open(filename, 'r', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        for row in reader:
+            state = row[0]
+            Q[state] = np.array(list(map(float, row[1:])))
+    return Q
+
+# --------------------------------------------------------------------------------
+# Retrieve PID values and q-table from the log file
+# --------------------------------------------------------------------------------
+
+# Load the last Q-table from the log file
+if os.path.exists('q_table.csv'):
+    Q = load_q_table()
+
+# Load the last PID values from the log file
+if os.path.exists('pid_log.csv'):
+    with open('pid_log.csv', 'r', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        last_row = None
+        for row in reader:
+            last_row = row
+    if last_row:
+        P, I, D = map(float, last_row)  # Read and convert to float values
+    os.remove('pid_log.csv')  # Delete the log file after loading
+
+# Recreate the log file with the last read PID values
+if last_row:
+    with open('pid_log.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(last_row)
 
 # --------------------------------------------------------------------------------
 # Define different states for the robot's behavior
@@ -74,6 +122,13 @@ step = 0  # Time step for the PID controller
 # --------------------------------------------------------------------------------
 # Functions
 # --------------------------------------------------------------------------------
+
+def log_pid_values(P, I, D):
+    # Function to log the PID values to a CSV file
+    with open('pid_log.csv', 'a', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow([P, I, D])
+
 def err(sens_val, sensweight):
     # Function to calculate the error based on the sensor values
     error = 0
@@ -120,9 +175,10 @@ def calibrationState():
     global currentState
     currentState = RobotState.IDLE
 
-
+count = 0
 def lineFollowingState(previous_state=None):
-    global step, sensor_weights
+    global step, sensor_weights, Q, count
+    count += 1
     current_state = determine_current_state()
 
     action = select_action(Q, current_state)
@@ -137,6 +193,9 @@ def lineFollowingState(previous_state=None):
     reward = rewarda(previous_state, current_state, next_state, error)
     update_q_value(Q, current_state, action, reward, next_state)
     previous_state = current_state
+    if count % 100 == 0:
+        save_q_table(Q)
+        count = 0
 
 
 def stopState():

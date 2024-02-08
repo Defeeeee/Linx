@@ -51,6 +51,8 @@ def adjust_gains(action):
         I = 0.5
         D = 0.3
 
+    log_pid_values(P, I, D)
+
 
 def rewarda(previous_state, current_state, next_state, error):
     reward = 0
