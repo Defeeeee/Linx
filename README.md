@@ -4,9 +4,9 @@ This project develops an autonomous robot that accurately follows a black line o
 
 ## Key Features
 
-Line Sensing: Employs 10 CNY70 emitter-phototransistor sensors for reliable line detection.
-PID Control: Uses a PID controller for smooth and accurate line-following adjustments.
-Q-Learning: Implements Q-learning to dynamically optimize the PID controller gains for different track conditions.
+- Line Sensing: Employs 10 CNY70 emitter-phototransistor sensors for reliable line detection.
+- PID Control: Uses a PID controller for smooth and accurate line-following adjustments.
+- Q-Learning: Implements Q-learning to dynamically optimize the PID controller gains for different track conditions.
 
 ### Hardware:
 Arduino Mega 2560 board
