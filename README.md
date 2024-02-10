@@ -9,12 +9,12 @@ This project develops an autonomous robot that accurately follows a black line o
 - Q-Learning: Implements Q-learning to dynamically optimize the PID controller gains for different track conditions.
 
 ### Hardware:
-Arduino Mega 2560 board
-10x CNY70 sensors
-Motor control setup (H-bridge or motor driver shield)
-Robot chassis, wheels, and power supply (battery)
+- Arduino Mega 2560 board
+- 10x CNY70 sensors
+- Motor control setup (H-bridge or motor driver shield)
+- Robot chassis, wheels, and power supply (battery)
 ### Software:
-Arduino IDE and Jetbrains Pycharm
+- Arduino IDE and Jetbrains Pycharm
 
 ## How It Works
 
