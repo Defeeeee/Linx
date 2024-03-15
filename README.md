@@ -1,19 +1,17 @@
 # FEM (Line-Following Robot)
 
-This project develops an autonomous robot that accurately follows a black line on the ground using an array of CNY70 sensors.
+This project develops an autonomous robot that accurately follows a black line on the ground using an array of CNY70 sensors and web cams for machine vision using openCV.
 
 ## How It Works
 
-- Calibration: Before starting, the robot performs a sensor calibration routine to account for variations in sensor readings.
-- Line Following: The robot reads the CNY70 sensor values and determines its position relative to the line.
-- PID Control: The PID controller calculates steering adjustments based on the detected line position, ensuring the robot follows the line smoothly.
-- Q-Learning Optimization: Through a trial-and-error process guided by rewards, the Q-learning algorithm learns the best combinations of PID gains for different situations (straight lines, turns, etc.).
+The web cams look for a line that they will use to locate thmeselves in space, they will also will be looking for ArUco markers which will indicate the robot where certain waypoints, obstacles and charging stations are located, it will proces this position and orientation data into the most optimal path that it can come up with and then it will send comands to the arduino for it to follow the desired path.
 
 ### Hardware:
 - Arduino Mega 2560 board
 - 10x CNY70 sensors
-- Motor control setup (H-bridge)
-- Robot chassis(3d printed), wheels, and power supply (battery)
+- HP laptop for image procesing
+- webcam
+  
 ### Software:
 - Arduino IDE, Jetbrains Pycharm and VScode
 
