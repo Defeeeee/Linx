@@ -2,7 +2,6 @@ import cv2 as cv
 import numpy as np
 import glob
 import codecs, json
-import serial
 
 
 def load_cam_calib_data(filepath='camCalibrationData.json'):
@@ -30,7 +29,8 @@ def undistort_img(_img, _cameraMatrix, _dist):
 
 
 load_cam_calib_data('camCalibrationData.json')
-cap = cv.VideoCapture(1)
-
-while cap.isOpened():
-    success, image = cap.read()
+img = cv.imread('calibration_images/test_image_juan.jpg')
+cv.imwrite('undistorted1.png', undistort_img(img, cameraMatrix, dist))
+cv.imshow('undistorted', cv.imread('undistorted1.png'))
+cv.imshow('normal', img)
+cv.waitKey(0)

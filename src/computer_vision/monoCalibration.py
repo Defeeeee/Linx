@@ -4,7 +4,7 @@ import glob
 import codecs, json
 
 chessboardsize = (6, 9)
-framesize = (1280, 720)
+framesize = (1920, 1080)
 
 # termination criteria
 criteria = (cv.TERM_CRITERIA_EPS + cv.TERM_CRITERIA_MAX_ITER, 30, 0.001)
@@ -21,7 +21,7 @@ objpoints = []  # 3d point in real world space
 imgpoints = []  # 2d points in image plane.
 
 # Get the path of the images
-images = glob.glob('calibration_images/webcam-genius/*.jpg')
+images = glob.glob('calibration_images/camara juan/*.jpg')
 
 for image in images:
     print(image)
@@ -75,7 +75,8 @@ def undistort_img(_img, _cameraMatrix, _dist):
     dst = dst[y:y+h, x:x+w]
     return dst
 
-img_ = cv.imread('calibration_images/test_image.jpg')
+
+img_ = cv.imread('calibration_images/test_image_juan.jpg')
 cv.imwrite('undistorted1.png', undistort_img(img_, cameraMatrix, dist))
 
 
