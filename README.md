@@ -17,10 +17,11 @@ The web cams look for a line that they will use to locate thmeselves in space, t
 
 ## Project Structure (Qlearn Module)
 
-- ```main.py```: Primary code file containing the state machine and core logic.
-- ```QLearn.py```: Implements the Q-learning functionality.
-- ```pins.py```: Defines Arduino pin assignments.
-- ```libs/```: Contains supporting libraries for PID control, calibration, and motor control.
+- ```deprecated```: Storage for old versions of the code, including FEM sensor guidance logic
+- ```src```: The LTS version of the code, in which we are working
+  - ```Arduino```
+  - ```Q-Learning```
+  - ```Machine Vision```
 
 ## Next Steps
 
