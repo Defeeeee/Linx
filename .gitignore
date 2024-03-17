@@ -2,3 +2,4 @@ ArduinoOutput/
 ./.DS_Store
 .idea/
 .vscode
+.venv
