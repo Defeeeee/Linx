@@ -1,6 +1,6 @@
-# FEM (Line-Following Robot)
+# LINX (Line and Independant Navegation eXperiment)
 
-This project develops an autonomous robot that accurately follows a black line on the ground using an array of CNY70 sensors and web cams for machine vision using openCV.
+This project is a technology demontrator for semi guided navegation, in which we follow physical lines for part of the travel but can also move independantly using computer vision.
 
 ## How It Works
 
