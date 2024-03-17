@@ -11,11 +11,14 @@ The web cams look for a line that they will use to locate thmeselves in space, t
 - 10x CNY70 sensors
 - HP laptop for image procesing
 - Webcam
+- ArUco Markers
   
 ### Software:
 - Arduino IDE, Jetbrains Pycharm and VScode
+- Python
+  - OpenCV
 
-## Project Structure (Qlearn Module)
+## Project Structure
 
 - ```deprecated```: Storage for old versions of the code, including FEM sensor guidance logic
 - ```src```: The LTS version of the code, in which we are working
