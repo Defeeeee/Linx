@@ -14,7 +14,6 @@ import timeit
 from time import sleep
 import pyfirmata2
 from enum import Enum
-import libs.PID  # Import PID library
 import libs.Calibration  # Import Calibration library
 
 
