@@ -1,6 +1,6 @@
 # LINX (Line and Independant Navegation eXperiment)
 
-This project is a technology demontrator for semi guided navegation, in which we follow physical lines for part of the travel but can also move independantly using computer vision.
+This project is a technology demonstrator for semi guided navegation, in which we follow physical lines for part of the travel but can also move independantly using computer vision.
 
 ## How It Works
 
