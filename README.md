@@ -33,10 +33,10 @@ Error handling: Incorporate fail-safes and recovery mechanisms for sensor malfun
 User interface: we are considering adding a localy hosted webapp to be able to remotely call Linx.
 Linx (FEM v2): we are prepareing a new version that incorporates machine vision to be able to navigate more complex terrain and go out of the line
 
-Contributions
-
 ### We welcome contributions to improve this project. Feel free to fork, submit pull requests, or raise issues.
 
 - [@juanpanpanyz]( https://github.com/juanpanpanyz): - Juan Baader
 - [@porfi2089](https://github.com/porfi2089): - Manuel Rao
 - [@Defeeeee](https://github.com/Defeeeee): - Federico Diaz Nemeth
+[![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com)
