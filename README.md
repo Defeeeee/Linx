@@ -38,5 +38,11 @@ Linx (FEM v2): we are prepareing a new version that incorporates machine vision 
 - [@juanpanpanyz]( https://github.com/juanpanpanyz): - Juan Baader
 - [@porfi2089](https://github.com/porfi2089): - Manuel Rao
 - [@Defeeeee](https://github.com/Defeeeee): - Federico Diaz Nemeth
+
+<br>
+
 [![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
+
+<br>
+
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com)
