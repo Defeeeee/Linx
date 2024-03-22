@@ -31,9 +31,7 @@ The web cams look for a line that they will use to locate thmeselves in space, t
 Enhance line-following on complex courses: Improve detection and handling of curves, intersections, and varying line widths.
 Error handling: Incorporate fail-safes and recovery mechanisms for sensor malfunctions or unexpected scenarios.
 User interface: we are considering adding a localy hosted webapp to be able to remotely call Linx.
-Linx (FEM v2): we are prepareing a new version that incorporates machine vision to be able to navigate more complex terrain and go out of the line
-
-Contributions
+Linx (FEM v2): we are currently developing a new version that incorporates machine vision to be able to navigate more complex terrain and go out of the line
 
 ### We welcome contributions to improve this project. Feel free to fork, submit pull requests, or raise issues.
 
