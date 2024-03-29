@@ -1,0 +1,3 @@
+[submodule "computer_vision"]
+	path = computer_vision
+	url = https://github.com/porfi2089/computer_vision.git
